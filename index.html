@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>StegoForensics — Detection Dashboard</title>
+<meta name="description" content="Steganography Detection & Hidden Data Extraction Project Dashboard"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ═══════════════════════════ SIDEBAR ═══════════════════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-logo">
+      <div class="brand-icon">🔍</div>
+      <div>
+        <div class="brand-name">StegoForensics</div>
+        <div class="brand-sub">v2.0 — Detection Engine</div>
+      </div>
+    </div>
+    <div class="brand-badge"><span class="dot-live"></span> Live Analysis</div>
+  </div>
+
+  <nav>
+    <div class="nav-section-label">Navigation</div>
+
+    <a class="nav-item active" data-page="dashboard" id="nav-dashboard">
+      <span class="nav-icon">📊</span>
+      <div>
+        <div>Dashboard</div>
+        <div class="nav-desc">Results & statistics</div>
+      </div>
+    </a>
+
+    <a class="nav-item" data-page="pipeline" id="nav-pipeline">
+      <span class="nav-icon">⚙️</span>
+      <div>
+        <div>How It Works</div>
+        <div class="nav-desc">Detection pipeline</div>
+      </div>
+    </a>
+
+    <a class="nav-item" data-page="scanner" id="nav-scanner">
+      <span class="nav-icon">🔬</span>
+      <div>
+        <div>File Scanner</div>
+        <div class="nav-desc">Upload & analyze</div>
+      </div>
+    </a>
+
+    <a class="nav-item" data-page="report" id="nav-report">
+      <span class="nav-icon">📄</span>
+      <div>
+        <div>Forensic Report</div>
+        <div class="nav-desc">Download PDF report</div>
+      </div>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-status">
+      <span class="dot-live"></span>
+      All systems operational
+    </div>
+  </div>
+</aside>
+
+<!-- ═══════════════════════════ MAIN ═══════════════════════════════ -->
+<main class="content">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <h1 id="page-title">Dashboard</h1>
+      <div class="topbar-sub">Steganography Detection &amp; Hidden Data Extraction Project</div>
+    </div>
+    <div class="topbar-right">
+      <div class="chip">Chi-Square + LSB + Entropy</div>
+      <div class="chip chip-green">● Detection Rate: <span id="top-rate">—</span></div>
+    </div>
+  </header>
+
+  <!-- ═══════════════ PAGE 1 — DASHBOARD ═══════════════════════════ -->
+  <section id="page-dashboard" class="page active">
+
+    <!-- Summary Cards -->
+    <div class="page-section-title">Summary</div>
+    <div class="cards-row">
+      <div class="card card-blue">
+        <div class="card-icon">📁</div>
+        <div class="card-label">Total Files Scanned</div>
+        <div class="card-value" id="c-total">—</div>
+        <div class="card-sub">JPEG + PNG + WAV</div>
+      </div>
+      <div class="card card-red">
+        <div class="card-icon">🚨</div>
+        <div class="card-label">Stego Detected</div>
+        <div class="card-value" id="c-detected">—</div>
+        <div class="card-sub">Hidden data confirmed</div>
+      </div>
+      <div class="card card-green">
+        <div class="card-icon">✅</div>
+        <div class="card-label">Clean Files</div>
+        <div class="card-value" id="c-clean">—</div>
+        <div class="card-sub">No hidden data found</div>
+      </div>
+      <div class="card card-yellow">
+        <div class="card-icon">🎯</div>
+        <div class="card-label">Detection Rate</div>
+        <div class="card-value" id="c-rate">—</div>
+        <div class="card-sub">True positive recall</div>
+      </div>
+    </div>
+
+    <!-- Accuracy Panel -->
+    <div class="panel" style="margin-bottom:1.25rem">
+      <div class="panel-header">
+        <div>
+          <h2>Classification Accuracy</h2>
+          <div class="panel-subtitle">Confusion matrix — how many files were correctly classified</div>
+        </div>
+        <div class="chip" id="accuracy-chip">Accuracy: —</div>
+      </div>
+      <div class="accuracy-grid" id="accuracy-grid">
+        <div class="acc-cell">
+          <div class="acc-label">True Positives</div>
+          <div class="acc-value" id="acc-tp" style="color:var(--green)">—</div>
+          <div class="acc-sub">Stego correctly flagged</div>
+        </div>
+        <div class="acc-cell">
+          <div class="acc-label">True Negatives</div>
+          <div class="acc-value" id="acc-tn" style="color:var(--green)">—</div>
+          <div class="acc-sub">Clean correctly passed</div>
+        </div>
+        <div class="acc-cell">
+          <div class="acc-label">False Positives</div>
+          <div class="acc-value" id="acc-fp" style="color:var(--yellow)">—</div>
+          <div class="acc-sub">Clean wrongly flagged</div>
+        </div>
+        <div class="acc-cell">
+          <div class="acc-label">False Negatives</div>
+          <div class="acc-value" id="acc-fn" style="color:var(--red)">—</div>
+          <div class="acc-sub">Stego missed</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detection Methods Performance -->
+    <div class="panel" style="margin-bottom:1.25rem">
+      <div class="panel-header">
+        <div>
+          <h2>Detection Methods Performance</h2>
+          <div class="panel-subtitle">7 independent analysis methods — each contributes to the final weighted score</div>
+        </div>
+      </div>
+      <div class="methods-grid" id="methods-grid"></div>
+    </div>
+
+    <!-- Files Table -->
+    <div class="panel" style="margin-bottom:1.25rem">
+      <div class="panel-header">
+        <div>
+          <h2>Analyzed Files</h2>
+          <div class="panel-subtitle">All scanned files with detection scores and verdicts</div>
+        </div>
+        <div class="filter-group">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="stego">Stego</button>
+          <button class="filter-btn" data-filter="clean">Clean</button>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table id="files-table">
+          <thead>
+            <tr>
+              <th>Filename</th>
+              <th>File Type</th>
+              <th>Size</th>
+              <th>Chi-Square</th>
+              <th>LSB Score</th>
+              <th>Extraction</th>
+              <th>Confidence</th>
+              <th>Verdict</th>
+            </tr>
+          </thead>
+          <tbody id="files-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Project Objective -->
+    <div class="objective-box" id="objective-box"></div>
+
+  </section>
+
+  <!-- ═══════════════ PAGE 2 — HOW IT WORKS ════════════════════════ -->
+  <section id="page-pipeline" class="page">
+
+    <!-- Pipeline Overview -->
+    <div class="page-section-title">Detection Pipeline</div>
+    <div class="panel" style="margin-bottom:1.25rem">
+      <div class="panel-header">
+        <div>
+          <h2>⚙️ How the Detection System Works</h2>
+          <div class="panel-subtitle">Step-by-step pipeline from raw file to forensic verdict</div>
+        </div>
+      </div>
+      <div class="pipeline-steps">
+        <div class="pipeline-step">
+          <div class="step-num">1</div>
+          <div class="step-title">Prepare Dataset</div>
+          <div class="step-desc">Embed secret messages into clean images using two steganography techniques</div>
+          <div class="step-tool">prepare_dataset.py</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num">2</div>
+          <div class="step-title">Statistical Analysis</div>
+          <div class="step-desc">Run Chi-Square, LSB Uniformity, and Shannon Entropy on every file</div>
+          <div class="step-tool">detect_steganography.py</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num">3</div>
+          <div class="step-title">Active Extraction</div>
+          <div class="step-desc">Attempt Steghide extraction with known passwords to confirm stego</div>
+          <div class="step-tool">steghide.exe</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num">4</div>
+          <div class="step-title">Weighted Scoring</div>
+          <div class="step-desc">Combine all scores into a final confidence percentage with verdict</div>
+          <div class="step-tool">Scoring Engine</div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-num">5</div>
+          <div class="step-title">Forensic Report</div>
+          <div class="step-desc">Generate structured JSON report and styled PDF for documentation</div>
+          <div class="step-tool">generate_pdf_report.py</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Embedding Techniques -->
+    <div class="page-section-title">Embedding Techniques Used</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.25rem">
+
+      <div class="panel">
+        <div class="panel-header"><h2>🖼️ JPEG — Steghide</h2></div>
+        <div style="padding:1rem 1.25rem">
+          <div style="font-size:0.78rem;color:var(--muted);line-height:1.7;margin-bottom:0.75rem">
+            Uses Steghide tool to embed data into the DCT coefficients of JPEG files.
+            Encrypted with <strong style="color:var(--text)">AES-128</strong> using a password.
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.4rem">
+            <div style="font-size:0.72rem"><span style="color:var(--green)">✓</span> <span style="color:var(--muted)">Password protected (AES-128)</span></div>
+            <div style="font-size:0.72rem"><span style="color:var(--green)">✓</span> <span style="color:var(--muted)">Minimal visual change</span></div>
+            <div style="font-size:0.72rem"><span style="color:var(--green)">✓</span> <span style="color:var(--muted)">Detectable by Chi-Square + Extraction</span></div>
+            <div style="font-size:0.72rem;margin-top:0.3rem"><span style="color:var(--blue);font-family:var(--mono);font-size:0.68rem">Password: stego123</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header"><h2>🖼️ PNG — LSB Substitution</h2></div>
+        <div style="padding:1rem 1.25rem">
+          <div style="font-size:0.78rem;color:var(--muted);line-height:1.7;margin-bottom:0.75rem">
+            Custom Python implementation that replaces the <strong style="color:var(--text)">Least Significant Bit</strong>
+            of each pixel channel with one bit of the secret message.
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.4rem">
+            <div style="font-size:0.72rem"><span style="color:var(--yellow)">⚠</span> <span style="color:var(--muted)">No encryption (raw bits)</span></div>
+            <div style="font-size:0.72rem"><span style="color:var(--green)">✓</span> <span style="color:var(--muted)">Invisible to naked eye (±1 pixel value)</span></div>
+            <div style="font-size:0.72rem"><span style="color:var(--green)">✓</span> <span style="color:var(--muted)">Extractable without password</span></div>
+            <div style="font-size:0.72rem;margin-top:0.3rem"><span style="color:var(--blue);font-family:var(--mono);font-size:0.68rem">Written in Python / NumPy</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header"><h2>🎵 WAV — Steghide Audio</h2></div>
+        <div style="padding:1rem 1.25rem">
+          <div style="font-size:0.78rem;color:var(--muted);line-height:1.7;margin-bottom:0.75rem">
+            Steghide natively supports WAV audio format. Embeds data into audio sample bytes
+            with <strong style="color:var(--text)">AES-128 encryption</strong>.
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.4rem">
+            <div style="font-size:0.72rem"><span style="color:var(--green)">✓</span> <span style="color:var(--muted)">Password protected (AES-128)</span></div>
+            <div style="font-size:0.72rem"><span style="color:var(--green)">✓</span> <span style="color:var(--muted)">Inaudible to human ear</span></div>
+            <div style="font-size:0.72rem"><span style="color:var(--green)">✓</span> <span style="color:var(--muted)">Detectable via LSB + Entropy analysis</span></div>
+            <div style="font-size:0.72rem;margin-top:0.3rem"><span style="color:var(--blue);font-family:var(--mono);font-size:0.68rem">Password: stego123</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detection Methods Deep Dive -->
+    <div class="page-section-title">Detection Methods Explained</div>
+    <div class="panel">
+      <div class="panel-header"><h2>🧪 7 Detection Methods — How Each Works</h2></div>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th><th>Method</th><th>How It Detects Steganography</th><th>Applies To</th><th>Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-mono" style="color:var(--blue)">M1</td>
+            <td><strong>Chi-Square Attack</strong></td>
+            <td class="td-muted">Tests if adjacent pixel value pairs (0-1, 2-3…) are equally frequent. In natural images they're unequal; in stego images embedding makes them equal.</td>
+            <td><span style="color:var(--yellow);font-size:0.72rem">JPEG · PNG</span></td>
+            <td style="color:var(--blue);font-family:var(--mono);font-size:0.75rem">25%</td>
+          </tr>
+          <tr>
+            <td class="td-mono" style="color:var(--blue)">M2</td>
+            <td><strong>LSB Uniformity</strong></td>
+            <td class="td-muted">Counts how often adjacent pixels flip their LSB. Random messages produce ~50% flip rate; natural images have lower, structured patterns produce higher rates.</td>
+            <td><span style="color:var(--yellow);font-size:0.72rem">ALL</span></td>
+            <td style="color:var(--blue);font-family:var(--mono);font-size:0.75rem">20%</td>
+          </tr>
+          <tr>
+            <td class="td-mono" style="color:var(--blue)">M3</td>
+            <td><strong>Shannon Entropy</strong></td>
+            <td class="td-muted">Measures information content of the LSB plane. Stego images approach maximum entropy (1.0) because embedded bits are pseudo-random.</td>
+            <td><span style="color:var(--yellow);font-size:0.72rem">ALL</span></td>
+            <td style="color:var(--blue);font-family:var(--mono);font-size:0.75rem">15%</td>
+          </tr>
+          <tr>
+            <td class="td-mono" style="color:var(--blue)">M4</td>
+            <td><strong>StegExpose (Java)</strong></td>
+            <td class="td-muted">Password-independent tool using fusion of Primary Sets, RS Analysis, and Sample Pairs. Works without knowing the embedding password.</td>
+            <td><span style="color:var(--yellow);font-size:0.72rem">JPEG</span></td>
+            <td style="color:var(--blue);font-family:var(--mono);font-size:0.75rem">10%</td>
+          </tr>
+          <tr>
+            <td class="td-mono" style="color:var(--blue)">M5</td>
+            <td><strong>Steghide Extraction</strong></td>
+            <td class="td-muted">Actively attempts to extract hidden data using known passwords. If extraction succeeds and returns content, stego is CONFIRMED — most reliable method.</td>
+            <td><span style="color:var(--yellow);font-size:0.72rem">JPEG · WAV</span></td>
+            <td style="color:var(--blue);font-family:var(--mono);font-size:0.75rem">50%</td>
+          </tr>
+          <tr>
+            <td class="td-mono" style="color:var(--blue)">M6</td>
+            <td><strong>LSB Extraction (PNG)</strong></td>
+            <td class="td-muted">Reverses the exact LSB embedding process: reads the first 32 bits as payload length, then extracts that many bytes. No password needed.</td>
+            <td><span style="color:var(--yellow);font-size:0.72rem">PNG</span></td>
+            <td style="color:var(--blue);font-family:var(--mono);font-size:0.75rem">100%*</td>
+          </tr>
+          <tr>
+            <td class="td-mono" style="color:var(--blue)">M7</td>
+            <td><strong>WAV Audio LSB</strong></td>
+            <td class="td-muted">Applies LSB uniformity and Shannon entropy analysis to 16-bit audio sample values. Stego audio shows abnormally random LSB patterns.</td>
+            <td><span style="color:var(--yellow);font-size:0.72rem">WAV</span></td>
+            <td style="color:var(--blue);font-family:var(--mono);font-size:0.75rem">30%</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="padding:0.75rem 1.25rem;font-size:0.68rem;color:var(--muted);border-top:1px solid var(--border)">
+        * M6 (LSB Extraction) overrides all other scores — if extraction succeeds, verdict is 100% STEGO DETECTED.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════ PAGE 3 — FILE SCANNER ════════════════════════ -->
+  <section id="page-scanner" class="page">
+
+    <div class="page-section-title">Live Analysis</div>
+
+    <div class="panel scanner-panel">
+      <div class="panel-header">
+        <div>
+          <h2>🔬 Upload File for Analysis</h2>
+          <div class="panel-subtitle">Real-time steganography detection using all 7 methods</div>
+        </div>
+      </div>
+
+      <div style="margin:1rem 1.25rem 0;padding:0.65rem 1rem;background:rgba(61,214,140,0.06);border:1px solid rgba(61,214,140,0.2);border-radius:8px;font-size:0.75rem;color:var(--green)">
+        <strong>Real Detection Active</strong> — runs Chi-Square + LSB + Entropy + Steghide extraction on your file.
+      </div>
+
+      <div class="upload-area" id="upload-area">
+        <div class="upload-icon">📂</div>
+        <p class="upload-text">Drag &amp; drop a file here, or click to select</p>
+        <div class="upload-formats">
+          <span class="fmt-tag">JPG</span>
+          <span class="fmt-tag">JPEG</span>
+          <span class="fmt-tag">PNG</span>
+          <span class="fmt-tag">WAV</span>
+          <span class="fmt-tag" style="color:var(--yellow);border-color:rgba(247,201,72,0.3)">MP3 ⟶ WAV</span>
+        </div>
+        <input type="file" id="file-input" accept=".jpg,.jpeg,.png,.wav,.mp3" hidden/>
+        <button class="btn" onclick="document.getElementById('file-input').click()">Choose File</button>
+      </div>
+
+      <div id="scanner-progress" class="progress-wrap hidden">
+        <div class="progress-label" id="progress-label">Initializing...</div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      </div>
+
+      <div id="scanner-results" class="scanner-results hidden"></div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════ PAGE 4 — FORENSIC REPORT ═════════════════════ -->
+  <section id="page-report" class="page">
+
+    <div class="page-section-title">Project Deliverable #5</div>
+
+    <!-- Download Panel -->
+    <div class="panel" style="margin-bottom:1.25rem">
+      <div class="panel-header">
+        <div>
+          <h2>📄 Forensic Detection Report</h2>
+          <div class="panel-subtitle">Covers accuracy analysis, payload proof, methodology, and recommendations</div>
+        </div>
+        <div style="display:flex;gap:0.75rem;align-items:center">
+          <a href="/download-pdf" download="forensic_report.pdf"
+             style="text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;
+                    padding:0.55rem 1.2rem;border-radius:8px;font-size:0.82rem;font-weight:700;
+                    background:linear-gradient(135deg,#4f8ef7,#7c3aed);color:#fff;
+                    transition:opacity .2s"
+             onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+            📥 Download PDF
+          </a>
+          <a href="/download-report" download="forensic_report.txt"
+             class="btn btn-sm" style="text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem">
+            📄 TXT Version
+          </a>
+          <button class="btn btn-sm" id="load-report-btn">👁 Preview</button>
+        </div>
+      </div>
+
+      <!-- What's in the report -->
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--border)">
+        <div style="padding:0.9rem 1rem;border-right:1px solid var(--border);text-align:center">
+          <div style="font-size:1.2rem;margin-bottom:0.3rem">📊</div>
+          <div style="font-size:0.72rem;font-weight:700;margin-bottom:0.2rem">Executive Summary</div>
+          <div style="font-size:0.65rem;color:var(--muted)">Cards + confusion matrix</div>
+        </div>
+        <div style="padding:0.9rem 1rem;border-right:1px solid var(--border);text-align:center">
+          <div style="font-size:1.2rem;margin-bottom:0.3rem">🧪</div>
+          <div style="font-size:0.72rem;font-weight:700;margin-bottom:0.2rem">Methodology</div>
+          <div style="font-size:0.65rem;color:var(--muted)">7 detection methods</div>
+        </div>
+        <div style="padding:0.9rem 1rem;border-right:1px solid var(--border);text-align:center">
+          <div style="font-size:1.2rem;margin-bottom:0.3rem">📋</div>
+          <div style="font-size:0.72rem;font-weight:700;margin-bottom:0.2rem">Per-File Results</div>
+          <div style="font-size:0.65rem;color:var(--muted)">All 20 files analyzed</div>
+        </div>
+        <div style="padding:0.9rem 1rem;border-right:1px solid var(--border);text-align:center">
+          <div style="font-size:1.2rem;margin-bottom:0.3rem">🔓</div>
+          <div style="font-size:0.72rem;font-weight:700;margin-bottom:0.2rem">Payload Proof</div>
+          <div style="font-size:0.65rem;color:var(--muted)">Extracted content</div>
+        </div>
+        <div style="padding:0.9rem 1rem;text-align:center">
+          <div style="font-size:1.2rem;margin-bottom:0.3rem">💡</div>
+          <div style="font-size:0.72rem;font-weight:700;margin-bottom:0.2rem">Recommendations</div>
+          <div style="font-size:0.65rem;color:var(--muted)">7 action items</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Report Preview -->
+    <div class="panel">
+      <div class="panel-header"><h2>Report Preview</h2></div>
+      <div id="report-content">
+        <div class="report-placeholder">
+          Click <strong>"👁 Preview"</strong> to display the report here.<br>
+          <p>Or click <strong>"📥 Download PDF"</strong> for the full styled version.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

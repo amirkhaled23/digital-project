@@ -1,0 +1,427 @@
+{
+  "files": [
+    {
+      "filename": "download (1).jpeg",
+      "file_type": "clean-jpeg",
+      "file_size_bytes": 6063,
+      "chi_square_score": 0.9794,
+      "lsb_uniformity_score": 1.0,
+      "entropy_score": 1.0,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.1991,
+      "steghide_extracted": false,
+      "extracted_content": "N/A",
+      "confidence_pct": 37.1,
+      "reasons": [
+        "Chi-Square high (0.98) \u2014 LSB pairs uniform",
+        "LSB randomness high (1.00) \u2014 random bit plane",
+        "Entropy maxed (1.00) \u2014 highly random LSB distribution"
+      ],
+      "final_verdict": "CLEAN",
+      "chi_square_suspicious": true,
+      "lsb_suspicious": true
+    },
+    {
+      "filename": "download (2).jpeg",
+      "file_type": "clean-jpeg",
+      "file_size_bytes": 5098,
+      "chi_square_score": 0.0,
+      "lsb_uniformity_score": 0.5975,
+      "entropy_score": 0.8717,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.3018,
+      "steghide_extracted": false,
+      "extracted_content": "N/A",
+      "confidence_pct": 8.1,
+      "reasons": [
+        "Entropy maxed (0.87) \u2014 highly random LSB distribution"
+      ],
+      "final_verdict": "CLEAN",
+      "chi_square_suspicious": false,
+      "lsb_suspicious": false
+    },
+    {
+      "filename": "download.jpeg",
+      "file_type": "clean-jpeg",
+      "file_size_bytes": 11794,
+      "chi_square_score": 0.9039,
+      "lsb_uniformity_score": 1.0,
+      "entropy_score": 1.0,
+      "compression_score": 0.0509,
+      "stegexpose_score": 1.0,
+      "steghide_extracted": false,
+      "extracted_content": "N/A",
+      "confidence_pct": 37.6,
+      "reasons": [
+        "StegExpose flagged (1.00) \u2014 statistical anomaly detected",
+        "Chi-Square high (0.90) \u2014 LSB pairs uniform",
+        "LSB randomness high (1.00) \u2014 random bit plane",
+        "Entropy maxed (1.00) \u2014 highly random LSB distribution"
+      ],
+      "final_verdict": "CLEAN",
+      "chi_square_suspicious": true,
+      "lsb_suspicious": true
+    },
+    {
+      "filename": "images (1).jpeg",
+      "file_type": "clean-jpeg",
+      "file_size_bytes": 6629,
+      "chi_square_score": 0.9855,
+      "lsb_uniformity_score": 1.0,
+      "entropy_score": 1.0,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.0717,
+      "steghide_extracted": false,
+      "extracted_content": "N/A",
+      "confidence_pct": 36.8,
+      "reasons": [
+        "Chi-Square high (0.99) \u2014 LSB pairs uniform",
+        "LSB randomness high (1.00) \u2014 random bit plane",
+        "Entropy maxed (1.00) \u2014 highly random LSB distribution"
+      ],
+      "final_verdict": "CLEAN",
+      "chi_square_suspicious": true,
+      "lsb_suspicious": true
+    },
+    {
+      "filename": "images.jpeg",
+      "file_type": "clean-jpeg",
+      "file_size_bytes": 6818,
+      "chi_square_score": 0.7746,
+      "lsb_uniformity_score": 0.9171,
+      "entropy_score": 0.9988,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.1272,
+      "steghide_extracted": false,
+      "extracted_content": "N/A",
+      "confidence_pct": 30.8,
+      "reasons": [
+        "Chi-Square high (0.77) \u2014 LSB pairs uniform",
+        "LSB randomness high (0.92) \u2014 random bit plane",
+        "Entropy maxed (1.00) \u2014 highly random LSB distribution"
+      ],
+      "final_verdict": "CLEAN",
+      "chi_square_suspicious": true,
+      "lsb_suspicious": true
+    },
+    {
+      "filename": "download (1).png",
+      "file_type": "clean-png",
+      "file_size_bytes": 2723,
+      "chi_square_score": 0.0,
+      "lsb_uniformity_score": 0.0816,
+      "entropy_score": 0.702,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.0,
+      "steghide_extracted": false,
+      "extracted_content": "N/A",
+      "confidence_pct": 30.9,
+      "reasons": [
+        "All features below threshold \u2014 no stego signal"
+      ],
+      "final_verdict": "CLEAN",
+      "chi_square_suspicious": false,
+      "lsb_suspicious": false
+    },
+    {
+      "filename": "download.png",
+      "file_type": "clean-png",
+      "file_size_bytes": 6317,
+      "chi_square_score": 0.0,
+      "lsb_uniformity_score": 0.1683,
+      "entropy_score": 0.8801,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.0,
+      "steghide_extracted": false,
+      "extracted_content": "N/A",
+      "confidence_pct": 41.1,
+      "reasons": [
+        "High LSB entropy (0.88) \u2014 random bit distribution"
+      ],
+      "final_verdict": "CLEAN",
+      "chi_square_suspicious": false,
+      "lsb_suspicious": false
+    },
+    {
+      "filename": "ambient_sample_1.wav",
+      "file_type": "clean-wav",
+      "file_size_bytes": 441044,
+      "chi_square_score": 0.0,
+      "lsb_uniformity_score": 0.9778,
+      "entropy_score": 0.9988,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.0,
+      "steghide_extracted": false,
+      "extracted_content": "N/A",
+      "confidence_pct": 29.5,
+      "reasons": [
+        "Audio LSB randomness high (0.98) \u2014 suspicious bit plane",
+        "Audio entropy high (1.00) \u2014 random LSB distribution"
+      ],
+      "final_verdict": "CLEAN",
+      "chi_square_suspicious": false,
+      "lsb_suspicious": true
+    },
+    {
+      "filename": "music_sample_1.wav",
+      "file_type": "clean-wav",
+      "file_size_bytes": 441044,
+      "chi_square_score": 0.0,
+      "lsb_uniformity_score": 1.0,
+      "entropy_score": 0.9988,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.0,
+      "steghide_extracted": false,
+      "extracted_content": "N/A",
+      "confidence_pct": 30.0,
+      "reasons": [
+        "Audio LSB randomness high (1.00) \u2014 suspicious bit plane",
+        "Audio entropy high (1.00) \u2014 random LSB distribution"
+      ],
+      "final_verdict": "CLEAN",
+      "chi_square_suspicious": false,
+      "lsb_suspicious": true
+    },
+    {
+      "filename": "voice_sample_1.wav",
+      "file_type": "clean-wav",
+      "file_size_bytes": 441044,
+      "chi_square_score": 0.0,
+      "lsb_uniformity_score": 0.9941,
+      "entropy_score": 0.9988,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.0,
+      "steghide_extracted": false,
+      "extracted_content": "N/A",
+      "confidence_pct": 29.9,
+      "reasons": [
+        "Audio LSB randomness high (0.99) \u2014 suspicious bit plane",
+        "Audio entropy high (1.00) \u2014 random LSB distribution"
+      ],
+      "final_verdict": "CLEAN",
+      "chi_square_suspicious": false,
+      "lsb_suspicious": true
+    },
+    {
+      "filename": "stego_download (1).jpeg",
+      "file_type": "stego-jpeg-steghide",
+      "file_size_bytes": 6565,
+      "chi_square_score": 0.9753,
+      "lsb_uniformity_score": 1.0,
+      "entropy_score": 1.0,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.1398,
+      "steghide_extracted": true,
+      "extracted_content": "[Password: stego123] Secret Message:\nServer IP = 192.168.10.5\nPassword = admin123",
+      "confidence_pct": 96.8,
+      "reasons": [
+        "Steghide extraction SUCCESS (definitive)",
+        "Chi-Square high (0.98) \u2014 LSB pairs uniform",
+        "LSB randomness high (1.00) \u2014 random bit plane",
+        "Entropy maxed (1.00) \u2014 highly random LSB distribution"
+      ],
+      "final_verdict": "STEGO DETECTED",
+      "chi_square_suspicious": true,
+      "lsb_suspicious": true
+    },
+    {
+      "filename": "stego_download (2).jpeg",
+      "file_type": "stego-jpeg-steghide",
+      "file_size_bytes": 5537,
+      "chi_square_score": 0.0,
+      "lsb_uniformity_score": 0.5989,
+      "entropy_score": 0.8754,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.315,
+      "steghide_extracted": true,
+      "extracted_content": "[Password: stego123] Secret Message:\nServer IP = 192.168.10.5\nPassword = admin123",
+      "confidence_pct": 68.1,
+      "reasons": [
+        "Steghide extraction SUCCESS (definitive)",
+        "Entropy maxed (0.88) \u2014 highly random LSB distribution"
+      ],
+      "final_verdict": "STEGO DETECTED",
+      "chi_square_suspicious": false,
+      "lsb_suspicious": false
+    },
+    {
+      "filename": "stego_download.jpeg",
+      "file_type": "stego-jpeg-steghide",
+      "file_size_bytes": 12523,
+      "chi_square_score": 0.9007,
+      "lsb_uniformity_score": 1.0,
+      "entropy_score": 1.0,
+      "compression_score": 0.0597,
+      "stegexpose_score": 1.0,
+      "steghide_extracted": true,
+      "extracted_content": "[Password: stegopass123] Secret Message:\nServer IP = 192.168.10.5\nPassword = admin123",
+      "confidence_pct": 97.5,
+      "reasons": [
+        "Steghide extraction SUCCESS (definitive)",
+        "StegExpose flagged (1.00) \u2014 statistical anomaly detected",
+        "Chi-Square high (0.90) \u2014 LSB pairs uniform",
+        "LSB randomness high (1.00) \u2014 random bit plane",
+        "Entropy maxed (1.00) \u2014 highly random LSB distribution"
+      ],
+      "final_verdict": "STEGO DETECTED",
+      "chi_square_suspicious": true,
+      "lsb_suspicious": true
+    },
+    {
+      "filename": "stego_images (1).jpeg",
+      "file_type": "stego-jpeg-steghide",
+      "file_size_bytes": 7352,
+      "chi_square_score": 0.9836,
+      "lsb_uniformity_score": 1.0,
+      "entropy_score": 1.0,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.1074,
+      "steghide_extracted": true,
+      "extracted_content": "[Password: stegopass123] Secret Message:\nServer IP = 192.168.10.5\nPassword = admin123",
+      "confidence_pct": 96.9,
+      "reasons": [
+        "Steghide extraction SUCCESS (definitive)",
+        "Chi-Square high (0.98) \u2014 LSB pairs uniform",
+        "LSB randomness high (1.00) \u2014 random bit plane",
+        "Entropy maxed (1.00) \u2014 highly random LSB distribution"
+      ],
+      "final_verdict": "STEGO DETECTED",
+      "chi_square_suspicious": true,
+      "lsb_suspicious": true
+    },
+    {
+      "filename": "stego_images.jpeg",
+      "file_type": "stego-jpeg-steghide",
+      "file_size_bytes": 7315,
+      "chi_square_score": 0.7824,
+      "lsb_uniformity_score": 0.9191,
+      "entropy_score": 0.9991,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.144,
+      "steghide_extracted": true,
+      "extracted_content": "[Password: stegopass123] Secret Message:\nServer IP = 192.168.10.5\nPassword = admin123",
+      "confidence_pct": 91.0,
+      "reasons": [
+        "Steghide extraction SUCCESS (definitive)",
+        "Chi-Square high (0.78) \u2014 LSB pairs uniform",
+        "LSB randomness high (0.92) \u2014 random bit plane",
+        "Entropy maxed (1.00) \u2014 highly random LSB distribution"
+      ],
+      "final_verdict": "STEGO DETECTED",
+      "chi_square_suspicious": true,
+      "lsb_suspicious": true
+    },
+    {
+      "filename": "stego_download (1).png",
+      "file_type": "stego-png-lsb",
+      "file_size_bytes": 6220,
+      "chi_square_score": 0.0,
+      "lsb_uniformity_score": 0.0846,
+      "entropy_score": 0.7055,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.0,
+      "steghide_extracted": true,
+      "extracted_content": "Secret Message:\nServer IP = 192.168.10.5\nPassword = admin123",
+      "confidence_pct": 100.0,
+      "reasons": [
+        "LSB extraction SUCCESS \u2014 hidden message recovered (no password needed)"
+      ],
+      "final_verdict": "STEGO DETECTED",
+      "chi_square_suspicious": false,
+      "lsb_suspicious": false
+    },
+    {
+      "filename": "stego_download.png",
+      "file_type": "stego-png-lsb",
+      "file_size_bytes": 14259,
+      "chi_square_score": 0.0,
+      "lsb_uniformity_score": 0.1713,
+      "entropy_score": 0.8808,
+      "compression_score": 0.0798,
+      "stegexpose_score": 0.0,
+      "steghide_extracted": true,
+      "extracted_content": "Secret Message:\nServer IP = 192.168.10.5\nPassword = admin123",
+      "confidence_pct": 100.0,
+      "reasons": [
+        "LSB extraction SUCCESS \u2014 hidden message recovered (no password needed)"
+      ],
+      "final_verdict": "STEGO DETECTED",
+      "chi_square_suspicious": false,
+      "lsb_suspicious": false
+    },
+    {
+      "filename": "stego_ambient_sample_1.wav",
+      "file_type": "stego-wav-steghide",
+      "file_size_bytes": 441044,
+      "chi_square_score": 0.0,
+      "lsb_uniformity_score": 0.9784,
+      "entropy_score": 0.9988,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.0,
+      "steghide_extracted": true,
+      "extracted_content": "[Password: stego123] Secret Message:\nServer IP = 192.168.10.5\nPassword = admin123",
+      "confidence_pct": 99.6,
+      "reasons": [
+        "Steghide WAV extraction SUCCESS (definitive)",
+        "Audio LSB randomness high (0.98) \u2014 suspicious bit plane",
+        "Audio entropy high (1.00) \u2014 random LSB distribution"
+      ],
+      "final_verdict": "STEGO DETECTED",
+      "chi_square_suspicious": false,
+      "lsb_suspicious": true
+    },
+    {
+      "filename": "stego_music_sample_1.wav",
+      "file_type": "stego-wav-steghide",
+      "file_size_bytes": 441044,
+      "chi_square_score": 0.0,
+      "lsb_uniformity_score": 1.0,
+      "entropy_score": 0.9988,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.0,
+      "steghide_extracted": true,
+      "extracted_content": "[Password: stegopass123] Secret Message:\nServer IP = 192.168.10.5\nPassword = admin123",
+      "confidence_pct": 100.0,
+      "reasons": [
+        "Steghide WAV extraction SUCCESS (definitive)",
+        "Audio LSB randomness high (1.00) \u2014 suspicious bit plane",
+        "Audio entropy high (1.00) \u2014 random LSB distribution"
+      ],
+      "final_verdict": "STEGO DETECTED",
+      "chi_square_suspicious": false,
+      "lsb_suspicious": true
+    },
+    {
+      "filename": "stego_voice_sample_1.wav",
+      "file_type": "stego-wav-steghide",
+      "file_size_bytes": 441044,
+      "chi_square_score": 0.0,
+      "lsb_uniformity_score": 0.9943,
+      "entropy_score": 0.9988,
+      "compression_score": 0.0,
+      "stegexpose_score": 0.0,
+      "steghide_extracted": true,
+      "extracted_content": "[Password: stego123] Secret Message:\nServer IP = 192.168.10.5\nPassword = admin123",
+      "confidence_pct": 99.9,
+      "reasons": [
+        "Steghide WAV extraction SUCCESS (definitive)",
+        "Audio LSB randomness high (0.99) \u2014 suspicious bit plane",
+        "Audio entropy high (1.00) \u2014 random LSB distribution"
+      ],
+      "final_verdict": "STEGO DETECTED",
+      "chi_square_suspicious": false,
+      "lsb_suspicious": true
+    }
+  ],
+  "summary": {
+    "total_files_scanned": 20,
+    "stego_files": 10,
+    "clean_files": 10,
+    "true_positives": 10,
+    "true_negatives": 10,
+    "false_positives": 0,
+    "false_negatives": 0,
+    "overall_accuracy_pct": 100.0,
+    "detection_rate_pct": 100.0
+  }
+}

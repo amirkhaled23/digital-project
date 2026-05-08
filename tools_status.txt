@@ -1,0 +1,74 @@
+========================================================
+ STEGANOGRAPHY PROJECT — TOOLS STATUS REPORT
+ Date: 2026-05-08
+ Environment: Windows 11, Python 3.11.9
+========================================================
+
+[1] Java Runtime Environment
+    Status : AVAILABLE
+    Version: Java 11.0.29 (LTS)
+    Purpose: Required to run StegExpose and StegSolve (JAR files)
+    Test   : java -version → OK
+
+[2] Steghide 0.5.1
+    Status : AVAILABLE (Windows binary)
+    Path   : .\steghide-0.5.1-win32\steghide\steghide.exe
+    Purpose: Embed and extract hidden data in JPEG/BMP files
+    Test   : steghide --version → "steghide version 0.5.1"
+    Usage  : steghide embed -cf input.jpg -ef secret.txt -sf output.jpg -p PASSWORD -f
+    Note   : Must use -p flag to avoid interactive passphrase prompt
+
+[3] StegExpose
+    Status : AVAILABLE
+    File   : StegExpose.jar
+    Purpose: Automated batch steganography detection
+    Test   : java -jar StegExpose.jar → responds with usage message
+    Usage  : java -jar StegExpose.jar <directory> default 0.2 report.csv
+
+[4] StegSolve 1.5
+    Status : AVAILABLE (GUI application)
+    File   : StegSolve-1.5-alpha1.jar
+    Purpose: Visual bit-plane extraction and image analysis
+    Test   : JAR file confirmed present (1.5-alpha1)
+    Usage  : java -jar StegSolve-1.5-alpha1.jar  (opens GUI window)
+
+[5] Stegdetect 0.6
+    Status : UNAVAILABLE on Windows (source code only)
+    Reason : Only C source files provided — no compiled .exe for Windows
+    Files  : stegdetect-0.6/stegdetect-0.6/*.c (source code)
+    Purpose: Would detect JSteg, JPHide, OutGuess techniques in JPEG
+    Workaround: Compile on Linux/WSL using: ./configure && make
+    Impact : Detection of JSteg/OutGuess patterns not possible on this machine
+
+[6] OpenStego
+    Status : AVAILABLE (installed)
+    Path   : OpenStego\Run OpenStego.lnk
+    Purpose: LSB steganography embedding and watermarking via GUI
+    Usage  : Double-click shortcut to launch
+
+[7] Audacity
+    Status : INSTALLER PRESENT
+    File   : Audacity_Installer_via_MuseHub.exe
+    Purpose: Audio steganography analysis via spectrogram view
+    Dataset: 3 MP3 files available in clean-dataset/audio/
+    Usage  : View → Spectrogram to inspect hidden frequency-domain messages
+
+[8] Python 3.11.9 + Libraries
+    Status : AVAILABLE
+    Libraries: Pillow 12.2.0, numpy 2.4.4, matplotlib 3.10.9
+    Purpose: Custom LSB embedding, detection engine, report generation
+
+========================================================
+ SUMMARY
+========================================================
+
+FULLY OPERATIONAL   : Steghide, StegExpose, StegSolve, OpenStego, Python
+AVAILABLE (install) : Audacity (run installer)
+UNAVAILABLE (Win)   : Stegdetect 0.6 — requires Linux/WSL compilation
+
+Detection coverage:
+  - JPEG (Steghide method) : Chi-Square + Active Extraction ✓
+  - PNG  (LSB method)      : Chi-Square + LSB Uniformity    ✓
+  - JPEG (JSteg/OutGuess)  : NOT COVERED (Stegdetect N/A)  ✗
+
+========================================================
